@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Raja Smriti Trophy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            color: white;
+            padding: 30px 15px;
+            text-align: center;
+        }
+
+        section {
+            max-width: 900px;
+            margin: 25px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #1e3a8a;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 6px;
+        }
+
+        .event {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f1f5f9;
+            border-left: 5px solid #2563eb;
+        }
+
+        .final {
+            background-color: #fee2e2;
+            border-left: 5px solid #dc2626;
+        }
+
+        .countdown {
+            margin-top: 8px;
+            font-weight: bold;
+            color: #1e40af;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #1e3a8a;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .powered {
+            font-weight: bold;
+            color: #2563eb;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Raja Smriti Trophy</h1>
+    <p>In Loving Memory of Raja</p>
+</header>
+
+<section>
+    <h2>Match Schedule & Countdown</h2>
+
+    <div class="event">
+        <strong>1st Semi Final</strong><br>
+        24th January 2026 — 2:00 PM IST
+        <div class="countdown" id="semi1"></div>
+    </div>
+
+    <div class="event">
+        <strong>2nd Semi Final</strong><br>
+        25th January 2026 — 2:00 PM IST
+        <div class="countdown" id="semi2"></div>
+    </div>
+
+    <div class="event final">
+        <strong>Final Match</strong><br>
+        27th January 2026 — 2:00 PM IST
+        <div class="countdown" id="final"></div>
+    </div>
+</section>
+
+<section>
+    <h2>Blood Donation Camp</h2>
+
+    <div class="event final">
+        <strong>Date:</strong> 28th January 2026
+    </div>
+
+    <p class="powered">
+        Powered by: Marokhana Yuva Somonnoy
+    </p>
+</section>
+
+<footer>
+    <p>© 2026 Raja Smriti Trophy</p>
+    <p>Powered by Marokhana Yuva Somonnoy</p>
+</footer>
+
+<script>
+    function startCountdown(id, dateTime) {
+        const eventTime = new Date(dateTime).getTime();
+
+        setInterval(function () {
+            const now = new Date().getTime();
+            const distance = eventTime - now;
+
+            if (distance <= 0) {
+                document.getElementById(id).innerHTML = "🎉 Match Started!";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById(id).innerHTML =
+                `${days}d ${hours}h ${minutes}m ${seconds}s remaining`;
+        }, 1000);
+    }
+
+    // 2:00 PM IST (UTC +05:30)
+    startCountdown("semi1", "2026-01-24T14:00:00+05:30");
+    startCountdown("semi2", "2026-01-25T14:00:00+05:30");
+    startCountdown("final", "2026-01-27T14:00:00+05:30");
+</script>
+
+</body>
+</html>
+
